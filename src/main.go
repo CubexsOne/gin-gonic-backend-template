@@ -4,12 +4,13 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/cubexsone/gin-gonic-backend-template/src/utils"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	var env = os.Getenv("ENV")
-	if env == "production" {
+	var env = utils.ToDefault(os.Getenv("ENV"), "DEV")
+	if env == "PROD" {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
