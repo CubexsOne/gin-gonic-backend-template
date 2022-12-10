@@ -11,6 +11,8 @@ services:
   backend-run:
     image: golang:1.19.4-alpine3.17
     container_name: backend
+    environment:
+      - ENV=DEV
     volumes:
       - ./src:/app/src
       - ./scripts/modd.sh:/app/scripts/modd.sh
@@ -24,6 +26,8 @@ services:
   backend-unit-tests:
     image: golang:1.19.4-alpine3.17
     container_name: backend-test
+    environment:
+      - ENV=DEV
     volumes:
       - ./src:/app/src
       - ./scripts/modd.sh:/app/scripts/modd.sh
