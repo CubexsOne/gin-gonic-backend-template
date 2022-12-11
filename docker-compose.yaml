@@ -44,3 +44,14 @@ services:
     networks:
       - local_prjctnet
     command: ["sh", "-c", "cd /app/scripts && ./modd.sh dev"]
+
+  backend-ci-unit-tests:
+    image: golang:1.19.4-alpine3.17
+    container_name: backend-test
+    environment:
+      - ENV=DEV
+    volumes:
+      - .:/app
+    networks:
+      - local_prjctnet
+    command: ["sh", "-c", "cd /app/scripts && ./test-ci.sh"]
