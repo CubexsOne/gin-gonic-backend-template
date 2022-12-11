@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 
+	"github.com/cubexsone/gin-gonic-backend-template/src/utils/log"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
@@ -70,7 +71,7 @@ func (database *Database) Connect() error {
 
 func GetInstance() *sqlx.DB {
 	if instance != nil {
-		fmt.Println("No database connection established!")
+		log.Error.Println("No database connection established!")
 	}
 
 	return instance

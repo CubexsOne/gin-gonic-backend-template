@@ -1,16 +1,16 @@
 package server
 
 import (
-	"os"
-
 	"github.com/cubexsone/gin-gonic-backend-template/src/controller"
+	"github.com/cubexsone/gin-gonic-backend-template/src/environment"
 	"github.com/cubexsone/gin-gonic-backend-template/src/server/middleware"
-	"github.com/cubexsone/gin-gonic-backend-template/src/utils"
+	"github.com/cubexsone/gin-gonic-backend-template/src/utils/log"
 	"github.com/gin-gonic/gin"
 )
 
 func Server() {
-	var env = utils.ToDefault(os.Getenv("ENV"), "DEV")
+	env := environment.ENV
+	log.Info.Println("Server is running on:", env)
 	if env == "PROD" {
 		gin.SetMode(gin.ReleaseMode)
 	}

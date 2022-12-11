@@ -1,9 +1,8 @@
 package database
 
 import (
-	"fmt"
-
 	"github.com/cubexsone/gin-gonic-backend-template/src/environment"
+	"github.com/cubexsone/gin-gonic-backend-template/src/utils/log"
 )
 
 var (
@@ -20,6 +19,6 @@ func Connect() {
 	database := New(host, port, user, password, database, schema, sslMode)
 	err := database.Connect()
 	if err != nil {
-		fmt.Println("Connect to database failed:", err)
+		log.Error.Println("Connect to database failed:", err)
 	}
 }
