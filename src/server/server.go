@@ -16,6 +16,9 @@ func Server() {
 	}
 
 	router := gin.Default()
+	router.GET("/ws", func(ctx *gin.Context) {
+		wsHandler(ctx.Writer, ctx.Request)
+	})
 	router.Use(middleware.ErrorHandler)
 	controller.Api(router)
 
