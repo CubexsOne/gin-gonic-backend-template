@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/cubexsone/gin-gonic-backend-template/src/controller"
+	"github.com/cubexsone/gin-gonic-backend-template/src/server/middleware"
 	"github.com/cubexsone/gin-gonic-backend-template/src/utils"
 	"github.com/gin-gonic/gin"
 )
@@ -15,6 +16,7 @@ func Server() {
 	}
 
 	router := gin.Default()
+	router.Use(middleware.ErrorHandler)
 	controller.Api(router)
 
 	router.Run(":3000")

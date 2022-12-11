@@ -21,6 +21,8 @@ services:
       - ./modd-run.conf:/app/modd-run.conf
     networks:
       - local_prjctnet
+    ports:
+      - 3000:3000
     command: ["sh", "-c", "cd /app/scripts && ./modd.sh run"]
 
   backend-unit-tests:
